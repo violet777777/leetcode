@@ -1,0 +1,21 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        
+        #排序：
+        '''
+        nums.sort()
+        return nums[floor(len(nums)/2)]
+        '''
+        #摩尔排序
+        count = 0
+        major = None
+        for i in range(len(nums)):
+            if count == 0:
+                major = nums[i]
+                count = 1
+                continue
+            elif major == nums[i]:
+                count += 1
+            elif major != nums[i]:
+                count -= 1
+        return major
